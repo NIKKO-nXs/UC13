@@ -82,3 +82,5 @@ CREATE TABLE Usuarios (
 
 INSERT INTO `Usuarios` (nome, email, senha, tipo) VALUES
 ('Administrador','admin@email.com','40220015','admin');
+
+SELECT * FROM `Cliente`;

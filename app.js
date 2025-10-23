@@ -135,7 +135,7 @@ app.get('/clientes/cadastrar', (req, res) => {
 });
 
 app.post('/clientes/cadastrar', (req, res) => {
-    const { nome, email, endereco, senha } = req.body; // Adicionei 'senha' aqui
+    const { nome, email, endereco, senha } = req.body; 
 
     bcrypt.hash(senha, 10, (erro, hash) => {
         if (erro) {
