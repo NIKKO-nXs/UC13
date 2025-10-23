@@ -1,0 +1,17 @@
+<h1 class="text-center my-4">Tabela Categoria</h1>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Categoria</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    {{#each Categoria}}
+    <tr>
+        <td value="{{this.Categoria_id}}">{{this.nome}}</td>
+        <td value = "{{this.descriacao}}">{{this.descriacao}}</td>
+        <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+    </tr>
+    {{/each}}
+</table>

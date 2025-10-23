@@ -49,16 +49,36 @@ CREATE TABLE Item_Pedido(
     FOREIGN KEY (produto_id) REFERENCES Produto(id)
 );
 
-INSERT INTO Categoria (nome,descriacao) VALUES
+
+INSERT INTO `Categoria` (nome,descriacao) VALUES
 ('Processador','CPUs para desktops'),
 ('Memório RAM','Módulos de memória para PCs'),
 ('Placas de Video','GPUs para jogos e renderização'),
 ('Armazenamento','Dispositivos como SSDs e HDs'),
 ('Placa-Mães','Motherboards compatíveis com CPus e periféricos');
 
-INSERT INTO Produto(nome,descriacao,preco,estoque,categoria) VALUES
+INSERT INTO `Produto`(nome,descriacao,preco,estoque,categoria) VALUES
 ('Intel Core 5-10400','6-núcleos, 12 threads 2.9GHz', 899.90, 10, 1),
 ('AMD Ryzen 5 5600X','6 núcleos, até 4.6GHz', 1099.00, 7, 1),
 ('Memória DDR4 8GB 2666MHz','Kingston Fury Beast', 189.90, 20, 2),
 ('Memória DDR4 16GB 3200MGHz','Corsair Vengeance LPX', 349.50, 15, 2),
 ('NVIDIA GeForce GTX 1660','6GB GDDR5', 1450.00,5 ,3);
+
+INSERT INTO `Cliente`(nome, email, senha, endereco) VALUES
+('João silva','joao@email.com','123456','Rua A 123'),
+('Maria Oliveira','maria@email.com','abcdef','Av. Central, 456'),
+('Carlos Souza','carlos@email.com','senha123','Rua das Flores, 78'),
+('Ana Costa','ana@email.com','senha456','Rua das Paz, 10'),
+('Pedro Lima','pedro@email.com','minhasenha','Rua Verde, 98');
+
+CREATE TABLE Usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    tipo VARCHAR(20) DEFAULT 'commum',
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO `Usuarios` (nome, email, senha, tipo) VALUES
+('Administrador','admin@email.com','40220015','admin');

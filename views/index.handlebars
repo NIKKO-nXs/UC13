@@ -1,1 +1,123 @@
-<h1>Hello World, com handlebars</h1>
+<style>
+  .card:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+  
+  .hero-section {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .nav-card {
+    transition: all 0.3s ease;
+    border: none;
+    background: #f8f9fa;
+  }
+
+  .nav-card:hover {
+    background: #e9ecef;
+    transform: translateY(-5px);
+  }
+</style>
+
+<div class="hero-section">
+  <div class="container">
+    <h1 class="text-center display-4 fw-bold mb-3">E-commerce PC</h1>
+    <p class="text-center lead mb-0">Sua loja completa de componentes para computador</p>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <!-- Menu de Navegação -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card nav-card h-100 text-center">
+        <div class="card-body">
+          <i class="bi bi-people fs-1 text-primary mb-3"></i>
+          <h5 class="card-title">Área de Clientes</h5>
+          <div class="d-grid gap-2">
+            <a href="/Cliente" class="btn btn-outline-primary mb-2">Ver Clientes</a>
+            <a href="/clientes/cadastrar" class="btn btn-outline-success">Cadastrar Cliente</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card nav-card h-100 text-center">
+        <div class="card-body">
+          <i class="bi bi-box-seam fs-1 text-primary mb-3"></i>
+          <h5 class="card-title">Produtos</h5>
+          <div class="d-grid gap-2">
+            <a href="/produtos/add" class="btn btn-outline-primary">Gerenciar Produtos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card nav-card h-100 text-center">
+        <div class="card-body">
+          <i class="bi bi-tags fs-1 text-primary mb-3"></i>
+          <h5 class="card-title">Categorias</h5>
+          <div class="d-grid gap-2">
+            <a href="/categoria" class="btn btn-outline-primary mb-2">Ver Categorias</a>
+            <a href="/categoria/add" class="btn btn-outline-success">Nova Categoria</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção de Produtos -->
+  <h2 class="text-center mb-4">Produtos Disponíveis</h2>
+  <p class="text-center mb-4 text-muted">Confira nossa seleção de componentes de alta qualidade para seu computador</p>
+  {{#if produtos.length}}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {{#each produtos}}
+        <div class="col">
+          <a href="/produtos/{{this.id}}" class="text-decoration-none">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title text-primary mb-3">{{this.nome}}</h5>
+                <p class="card-text text-muted mb-2">
+                  {{#if this.descricao}}
+                    {{this.descricao}}
+                  {{else}}
+                    Componente para computador
+                  {{/if}}
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="h5 text-success mb-0">R$ {{this.preco}}</span>
+                  <span class="badge bg-primary">{{this.categoria}}</span>
+                </div>
+              </div>
+              <div class="card-footer bg-transparent border-top-0">
+                <button class="btn btn-outline-primary w-100">Ver Detalhes</button>
+              </div>
+            </div>
+          </a>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="alert alert-info text-center" role="alert">
+      <i class="bi bi-info-circle me-2"></i>
+      Sem produtos disponíveis no momento.
+      <br>
+      <a href="/produtos/add" class="btn btn-primary mt-3">Adicionar Produto</a>
+    </div>
+  {{/if}}
+</div>
+
+<!-- Seção de rodapé -->
+<footer class="bg-light mt-5 py-4">
+  <div class="container text-center">
+    <p class="text-muted mb-0">© 2025 E-commerce PC - Todos os direitos reservados</p>
+  </div>
+</footer>

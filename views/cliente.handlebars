@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="text-center text-primary">Lista de Clientes</h1>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-12 text-end">
+            <a href="/cliente/add" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Novo Cliente
+            </a>
+        </div>
+    </div>
+
+    {{#if clientes.length}}
+        <div class="row">
+            {{#each clientes}}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{this.nome}}</h5>
+                        <p class="card-text">
+                            <strong><i class="bi bi-envelope"></i> Email:</strong> {{this.email}}<br>
+                            <strong><i class="bi bi-geo-alt"></i> Endereço:</strong> {{this.endereco}}
+                        </p>
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="/cliente/editar/{{this.id}}" class="btn btn-primary btn-sm">
+                                <i class="bi bi-pencil"></i> Editar
+                            </a>
+                            <a href="/cliente/excluir/{{this.id}}" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Excluir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="alert alert-info text-center" role="alert">
+            <i class="bi bi-info-circle me-2"></i>
+            Nenhum cliente cadastrado no momento.
+        </div>
+    {{/if}}
+</div>
